@@ -1,5 +1,4 @@
-name: '02 Terraform'
-
+name: 'Terraform_CLI'
 on:
   workflow_dispatch
 
