@@ -49,11 +49,11 @@ jobs:
       run: terraform apply -auto-approve -input=false
 
   Install_archy:
-    uses: pratyusha-deekshit/terraform_CLI/github/workflows/install_archy.yml
+    uses: pratyusha-deekshit/terraform_CLI/.github/workflows/install_archy.yml@master
   
   Push_archy_flow:
     needs: Install_archy
-    uses: pratyusha-deekshit/terraform_CLI/.github/workflows/archy_action.yml
+    uses: pratyusha-deekshit/terraform_CLI/.github/workflows/archy_action.yml@master
     with:
       architect-flow-path: pratyusha-deekshit/terraform_CLI/blueprint/genesys-cloud-architect-flows/TestPD628.yaml
       architect-results-path: pratyusha-deekshit/terraform_CLI/output/results.json
