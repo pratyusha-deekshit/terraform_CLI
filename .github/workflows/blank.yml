@@ -15,7 +15,6 @@ jobs:
       GENESYSCLOUD_API_REGION: "https://api.euw2.pure.cloud"
       GENESYSCLOUD_REGION: "eu-west-2"
       GENESYSCLOUD_ARCHY_REGION: "euw2.pure.cloud"
-    environment: production
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
