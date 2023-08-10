@@ -2,11 +2,11 @@ name: "Publish Archy Flow"
 on:
   workflow_call:
     inputs:
-      architect-flow-path: # id of input
+      architect-flow-path:
         description: "The fully qualified directory and file name for the architect flow that will be published"
         required: true
         type: string
-      architect-results-path: # id of input
+      architect-results-path:
         description: "The fully qualified directory and file name for the results file executed by the flow. If you have multiple flows make sure you name each results file to be unique."
         required: true
         type: string
@@ -18,7 +18,6 @@ jobs:
         shell: bash
     steps:
       - run: |
-          export PATH=$PATH:$GITHUB_WORKSPACE/archy
           archy publish --forceUnlock --file ${{inputs.architect-flow-path}} --clientId $GENESYSCLOUD_OAUTHCLIENT_ID --clientSecret $GENESYSCLOUD_OAUTHCLIENT_SECRET --location $GENESYSCLOUD_ARCHY_REGION  --overwriteResultsFile --resultsFile ${{inputs.architect-results-path}}
           cat ${{inputs.architect-results-path}}
         shell: bash
