@@ -26,9 +26,6 @@ jobs:
       - name: List Contents of Workspace
         run: |
           ls -la $GITHUB_WORKSPACE
-      - name: List Contents of Directory
-        run: |
-          ls -la $GITHUB_WORKSPACE/archy
       - run: |
           export PATH=$PATH:$GITHUB_WORKSPACE
           archy publish --forceUnlock --file ${{inputs.architect-flow-path}} --clientId $GENESYSCLOUD_OAUTHCLIENT_ID --clientSecret $GENESYSCLOUD_OAUTHCLIENT_SECRET --location $GENESYSCLOUD_ARCHY_REGION  --overwriteResultsFile --resultsFile ${{inputs.architect-results-path}}
