@@ -10,6 +10,12 @@ jobs:
   terraform:
     name: 'Terraform'
     runs-on: ubuntu-latest
+    env:
+      GENESYSCLOUD_OAUTHCLIENT_ID: ${{ secrets.GENESYSCLOUD_OAUTHCLIENT_ID_TEST }}
+      GENESYSCLOUD_OAUTHCLIENT_SECRET: ${{ secrets.GENESYSCLOUD_OAUTHCLIENT_SECRET_TEST }}
+      GENESYSCLOUD_API_REGION: "https://api.euw2.pure.cloud"
+      GENESYSCLOUD_REGION: "eu-west-2"
+      GENESYSCLOUD_ARCHY_REGION: "euw2.pure.cloud"
     environment: production
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
@@ -21,6 +27,9 @@ jobs:
     # Checkout the repository to the GitHub Actions runner
     - name: Checkout
       uses: actions/checkout@v3
+    
+    - name: Install Archy
+      uses: pratyusha-deekshit/terraform_CLI/github/workflows/install_archy.yml
 
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
@@ -43,5 +52,11 @@ jobs:
     - name: Terraform Apply
       working-directory: ./blueprint
       run: terraform apply -auto-approve -input=false
+
+    - name: push architect flow
+    - uses: pratyusha-deekshit/terraform_CLI/.github/workflows/archy_action.yml
+        with:
+          architect-flow-path: $GITHUB_WORKSPACE/blueprint/genesys-cloud-architect-flows/TestPD628.yaml
+          architect-results-path: $GITHUB_WORKSPACE/output/results.json
       
     #end
