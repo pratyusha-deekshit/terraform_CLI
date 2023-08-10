@@ -56,7 +56,7 @@ jobs:
   Push_archy_flow:
     needs: Install_archy
     uses: pratyusha-deekshit/terraform_CLI/.github/workflows/archy_action.yml
-        with:
-          architect-flow-path: $GITHUB_WORKSPACE/blueprint/genesys-cloud-architect-flows/TestPD628.yaml
-          architect-results-path: $GITHUB_WORKSPACE/output/results.json
+    with:
+      architect-flow-path: pratyusha-deekshit/terraform_CLI/blueprint/genesys-cloud-architect-flows/TestPD628.yaml
+      architect-results-path: pratyusha-deekshit/terraform_CLI/output/results.json
     #end
