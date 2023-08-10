@@ -23,6 +23,9 @@ jobs:
       run:
         shell: bash
     steps:
+      - name: List Contents of Workspace
+        run: |
+          ls -la $GITHUB_WORKSPACE
       - name: List Contents of Directory
         run: |
           ls -la $GITHUB_WORKSPACE/archy
