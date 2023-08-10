@@ -47,7 +47,9 @@ jobs:
     - name: Terraform Apply
       working-directory: ./blueprint
       run: terraform apply -auto-approve -input=false
-    
+
+    - name: Checkout Repository
+      uses: actions/checkout@v2
     - name: Install_archy
       uses: ./.github/actions/install_archy.yml
     - name: Push_archy_flow
