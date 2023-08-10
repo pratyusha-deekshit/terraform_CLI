@@ -1,24 +1,21 @@
-###
-#  This action installs the Genesys Cloud python SDK and then installs archy.
-#  It also adds Archy to the path
-#
-###
 name: "Setup Genesys Cloud Tools"
-description: "Installs Archy and the Genesys Cloud CLI"
 on:
   workflow_call:
-
-runs:
-  using: "composite"
-  steps:
-    - run: |
-        mkdir archy
-        cd archy
-        wget -q https://sdk-cdn.mypurecloud.com/archy/latest/archy-linux.zip
-        unzip archy-linux.zip
-        . archy version                            
-        export PATH=$PATH:$GITHUB_WORKSPACE/archy
-        cd ..
-        pwd
-        archy version
-      shell: bash
+jobs:
+  Archy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - run: |
+          mkdir archy
+          cd archy
+          wget -q https://sdk-cdn.mypurecloud.com/archy/latest/archy-linux.zip
+          unzip archy-linux.zip
+          . archy version                            
+          export PATH=$PATH:$GITHUB_WORKSPACE/archy
+          cd ..
+          pwd
+          archy version
+        shell: bash
